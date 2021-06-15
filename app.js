@@ -64,8 +64,10 @@ const galleryItems = [
     },
   ];
 
-  const listGallery = document.querySelectorAll('.js-gallery');
+  const listGallery = document.querySelector('.js-gallery');
   console.log(listGallery);
+ 
+  
 
   const makeImageItemtemplate = itemsCard => {
   
@@ -88,5 +90,5 @@ return `<li class="gallery__item">
   const makeImagesItems = galleryItems.map(makeImageItemtemplate).join('');
   console.log(makeImagesItems);
 
- 
+  console.log(listGallery);
   listGallery.insertAdjacentHTML('afterbegin', makeImagesItems);
