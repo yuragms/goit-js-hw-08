@@ -69,10 +69,11 @@ const galleryItems = [
 
   const makeImageItemtemplate = itemsCard => {
   
-    return `<li class="gallery__item">
+
+return `<li class="gallery__item">
   <a
     class="gallery__link"
-    href="${itemsCard.original}"
+    href="#"
   >
     <img
       class="gallery__image"
@@ -89,4 +90,4 @@ const galleryItems = [
   console.log(makeImagesItems);
 
  
-  listGallery.insertAdjacentHTML ('afterbegin' , makeImagesItems );
+  listGallery.insertAdjacentHTML('afterbegin', makeImagesItems);
