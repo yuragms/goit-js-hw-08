@@ -89,4 +89,4 @@ const galleryItems = [
   console.log(makeImagesItems);
 
  
-  listGallery.insertAdjacentHTML ( 'afterbegin' , makeImagesItems );
+  listGallery.insertAdjacentHTML ('afterbegin' , makeImagesItems );
