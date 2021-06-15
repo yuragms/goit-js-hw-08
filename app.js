@@ -64,7 +64,7 @@ const galleryItems = [
     },
   ];
 
-  const listGallery = document.querySelectorAll('ul');
+  const listGallery = document.querySelectorAll('.js-gallery');
   console.log(listGallery);
 
   const makeImageItemtemplate = itemsCard => {
@@ -84,7 +84,6 @@ return `<li class="gallery__item">
   </a>
 </li>`;
 };
-
 
   const makeImagesItems = galleryItems.map(makeImageItemtemplate).join('');
   console.log(makeImagesItems);
