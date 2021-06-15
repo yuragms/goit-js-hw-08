@@ -64,5 +64,29 @@ const galleryItems = [
     },
   ];
 
-  const listGallery = document.querySelectorAll(.gallery js-gallery);
+  const listGallery = document.querySelectorAll('ul');
   console.log(listGallery);
+
+  const makeImageItemtemplate = itemsCard => {
+  
+    return `<li class="gallery__item">
+  <a
+    class="gallery__link"
+    href="${itemsCard.original}"
+  >
+    <img
+      class="gallery__image"
+      src="${itemsCard.preview}"
+      data-source="${itemsCard.original}"
+      alt="${itemsCard.description}"
+    />
+  </a>
+</li>`;
+};
+
+
+  const makeImagesItems = galleryItems.map(makeImageItemtemplate).join('');
+  console.log(makeImagesItems);
+
+ 
+  listGallery.insertAdjacentHTML ( 'afterbegin' , makeImagesItems );
