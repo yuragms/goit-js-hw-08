@@ -64,5 +64,5 @@ const galleryItems = [
     },
   ];
 
-  const listGallery = document.querySelectorAll(gallery js-gallery);
+  const listGallery = document.querySelectorAll(.gallery js-gallery);
   console.log(listGallery);
