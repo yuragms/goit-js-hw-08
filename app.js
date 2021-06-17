@@ -98,6 +98,16 @@ return `<li class="gallery__item">
   closeBtn.addEventListener('click', onCloseModal);
 
 
+function imgSrcGhange (a) {
+  img.src = a;
+};
+
+function imgAltGhange (a) {
+  img.alt = a;
+};
+
+
+
   function onImg (event) {
     if (event.target.nodeName != 'IMG') {
 return;
@@ -108,9 +118,12 @@ const targetImg = event.target;
 // console.log(targetImg.dataset);
 modalWindow.classList.toggle("is-open");
 // console.log(modalWindow);
-img.src = targetImg.dataset.source;
+// img.src = targetImg.dataset.source;
+imgSrcGhange (targetImg.dataset.source);
 const alt = targetImg.getAttribute( "alt", event.target.dataset.source);
-img.alt = alt;
+// img.alt = alt;
+imgAltGhange (alt);
+
 console.log(img);
 }  
   }
@@ -118,8 +131,10 @@ console.log(img);
   function onCloseModal (e) {
     const targetBtn = e.target;
     modalWindow.classList.toggle("is-open");
-    img.src = "";
-    img.alt = "";
+    // img.src = "";
+    // img.alt = "";
+    imgSrcGhange ("");
+    imgAltGhange ("");
     // console.log(img);
   }
 
