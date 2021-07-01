@@ -69,6 +69,10 @@ const galleryItems = [
   const img = document.querySelector('.lightbox__image');
   const closeBtn = document.querySelector('button[data-action="close-lightbox"]');
   const overlay = document.querySelector('.lightbox__overlay');
+  let currentIndex;
+  const maxIndexgalleryItems =galleryItems.length -1;
+  
+  
 
   
  
@@ -100,6 +104,8 @@ return `<li class="gallery__item">
   closeBtn.addEventListener('click', onCloseModal);
   overlay.addEventListener('click', onCloseModal);
   window.addEventListener('keydown', onCloseModalEsc);
+  window.addEventListener('keydown', onImgRight);
+  window.addEventListener('keydown', onImgLeft);
 
 function imgSrcGhange (a) {
   img.src = a;
@@ -111,12 +117,95 @@ function imgAltGhange (a) {
 
 
 
+  // function onImgLeftRight (e) {
+    
+  //   e.preventDefault();
+  //   console.log(e.key);
+  //   console.log(currentIndex);
+  //   currentIndex = 2;
+  //   console.log(currentIndex);
+  //   if (e.key === "ArrowRight") {
+     
+  //     if(currentIndex = !currentIndex) { 
+  //       currentIndex= 0;
+        
+  //     } else { 
+  //       console.log(currentIndex);
+  //       currentIndex += 1;
+  //       console.log(5);
+  //       console.log(currentIndex);
+  //     }
+    
+  //     console.log(currentIndex);
+  //     console.log(galleryItems[currentIndex].description);
+  //     modalWindow.classList.toggle("is-open");
+      
+  //     img.src = galleryItems[currentIndex].original;
+  //     img.alt = galleryItems[currentIndex].description;
+  //     console.log(img);
+  //   }
+
+  // }
+
+  function onImgRight (e) {
+
+    if (e.key === "ArrowRight") {
+      let targetImg = e.target;
+      console.log(targetImg);
+      console.log(img.src);
+    currentIndex = galleryItems.map(x => x.original).indexOf(img.src);
+    currentIndex +=1;
+    if(currentIndex > maxIndexgalleryItems) { currentIndex = 0;};
+    imgSrcGhange (galleryItems[currentIndex].original);
+
+console.log(currentIndex);}
+  }
+
+  function onImgLeft (e) {
+
+    if (e.key === "ArrowLeft") {
+      let targetImg = e.target;
+      console.log(targetImg);
+      console.log(img.src);
+    currentIndex = galleryItems.map(x => x.original).indexOf(img.src);
+    currentIndex -=1;
+    if(currentIndex < 0) { currentIndex = maxIndexgalleryItems;};
+    imgSrcGhange (galleryItems[currentIndex].original);
+
+console.log(currentIndex);}
+  }
+
+
+  //     if (e.target.nodeName != 'IMG') {
+// return;
+//     }
+// {
+// e.preventDefault();
+// const targetImg = e.target;
+// // console.log(targetImg.dataset);
+// modalWindow.classList.toggle("is-open");
+// // console.log(modalWindow);
+// // img.src = targetImg.dataset.source;
+// imgSrcGhange (targetImg.dataset.source);
+// const alt = targetImg.getAttribute( "alt", e.target.dataset.source);
+// // img.alt = alt;
+// imgAltGhange (alt);
+
+// console.log(img);
+// let currentIndex = galleryItems.map(x => x.original).indexOf(targetImg.dataset.source);
+
+// console.log(currentIndex);
+
+// }  
+
   function onImg (event) {
+    
     if (event.target.nodeName != 'IMG') {
 return;
     }
 {
 event.preventDefault();
+console.log(event.target.nodeName);
 const targetImg = event.target;
 // console.log(targetImg.dataset);
 modalWindow.classList.toggle("is-open");
@@ -128,8 +217,13 @@ const alt = targetImg.getAttribute( "alt", event.target.dataset.source);
 imgAltGhange (alt);
 
 console.log(img);
-}  
+currentIndex = galleryItems.map(x => x.original).indexOf(targetImg.dataset.source);
+
+console.log(currentIndex);
+}
+ 
   }
+
 
   function onCloseModal (e) {
     // const targetBtn = e.target;
